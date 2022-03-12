@@ -2,16 +2,16 @@
 <html>
 
 <head>
-  <title>Indian Stock market Average Calculator</title>
+  <title>Stock Average Calculator</title>
   <meta charset="UTF-8">
   <meta name="description" content="These application allows to calculate stocks average" />
   <meta name="keywords" content="Indian stock market, average calculator, stock calculator">
-  <meta name="author" content="John Doe">
+  <meta name="author" content="">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <!-- Styles -->
   <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ"
-    crossorigin="anonymous">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css"
+    integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
   <style>
     html {
       position: relative;
@@ -56,9 +56,9 @@
     <div class="row">
       <div class="col-md-12">
         <header>
-          <h2 style="color: #929292;margin-top: 15px;">Indian stock market average calculator</h2>
+          <h2 style="color: #929292;margin-top: 15px;">Stock average calculator</h2>
         </header>
-        <hr/>
+        <hr />
       </div>
     </div>
     <div class="row">
@@ -67,12 +67,14 @@
           <hr>
           <div>
             <label style="float:left;margin-right:10px;">Units</label>
-            <input class="form-control" type="number" id="units1" autocomplete="off" onchange="unitChanged('units1','error1')" />
+            <input class="form-control" type="number" id="units1" autocomplete="off"
+              onchange="unitChanged('units1','error1')" />
             <span id='error1'></span>
           </div>
           <div style="margin-top:15px">
             <label style="float:left;margin-right:10px;">Price</label>
-            <input class="form-control" type="number" id="Price1" autocomplete="off" onchange="unitChanged('Price1','error2')" />
+            <input class="form-control" type="number" id="Price1" autocomplete="off"
+              onchange="unitChanged('Price1','error2')" />
             <span id='error2'></span>
           </div>
       </div>
@@ -81,12 +83,14 @@
           <hr>
           <div>
             <label style="float:left;margin-right:10px;">Units</label>
-            <input class="form-control" type="number" id="units2" autocomplete="off" onchange="unitChanged('units2','error3')" />
+            <input class="form-control" type="number" id="units2" autocomplete="off"
+              onchange="unitChanged('units2','error3')" />
             <span id='error3'></span>
           </div>
           <div style="margin-top:15px">
             <label style="float:left;margin-right:10px;">Price</label>
-            <input class="form-control" type="number" id="Price2" autocomplete="off" onchange="unitChanged('Price2','error4')">
+            <input class="form-control" type="number" id="Price2" autocomplete="off"
+              onchange="unitChanged('Price2','error4')">
             <span id='error4'></span>
           </div>
       </div>
@@ -99,9 +103,60 @@
       </div>
     </div>
   </div>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <header>
+          <h2 style="color: #929292;margin-top: 15px;">Down average calculator</h2>
+        </header>
+        <hr />
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-4 st">
+        <h4>First Buy</h3>
+          <hr>
+          <div>
+            <label style="float:left;margin-right:10px;">Units</label>
+            <input class="form-control" type="number" id="units5" autocomplete="off"
+              onchange="unitChanged('units5','error5')" />
+            <span id='error5'></span>
+          </div>
+          <div style="margin-top:15px">
+            <label style="float:left;margin-right:10px;">Price</label>
+            <input class="form-control" type="number" id="Price6" autocomplete="off"
+              onchange="unitChanged('Price6','error6')" />
+            <span id='error6'></span>
+          </div>
+      </div>
+      <div class="col-md-4 st">
+        <h4>Second Buy</h3>
+          <hr>
+          <div>
+            <label style="float:left;margin-right:10px;">Target price</label>
+            <input class="form-control" type="number" id="units7" autocomplete="off"
+              onchange="unitChanged('units7','error7')" />
+            <span id='error7'></span>
+          </div>
+          <div style="margin-top:15px">
+            <label style="float:left;margin-right:10px;">Current Market Price</label>
+            <input class="form-control" type="number" id="Price8" autocomplete="off"
+              onchange="unitChanged('Price8','error8')">
+            <span id='error8'></span>
+          </div>
+      </div>
+      <div class="col-md-12 st">
+        <h4 id="result2"></h4>
+      </div>
+      <div class="col-md-12 st">
+        <button class="btn btn-success" onclick="getDownAverage()"> Calculate Down Average</button>
+        <button class="btn btn-warning" onclick="clearFields()">Clear Fields</button>
+      </div>
+    </div>
+  </div>
   <footer>
     <div class="container">
-      &copy; free to use share or modify.  August - 2017</div>
+      &copy; free to use share or modify. March - 2022</div>
   </footer>
 
   </div>
@@ -141,12 +196,49 @@
       document.getElementById("result").innerHTML = "Total units &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<bold>"
         + res2 + "</bold><br/><br/>Average Price &nbsp;&nbsp;&nbsp;<bold>" + result + "</bold>";
     }
+    function getDownAverage() {
+
+      if (document.getElementById("units5").value == '') {
+        document.getElementById("error5").innerHTML = "Units required..";
+        return;
+      } else if (document.getElementById("Price6").value == '') {
+        document.getElementById("error6").innerHTML = "Price required..";
+        return;
+      } else if (document.getElementById("units7").value == '') {
+        document.getElementById("error7").innerHTML = "Units required..";
+        return;
+      } else if (document.getElementById("Price8").value == '') {
+        document.getElementById("error8").innerHTML = "Price required..";
+        return;
+      }else if (document.getElementById("Price8").value > document.getElementById("units7").value) {
+        document.getElementById("error8").innerHTML = "Target price should be lower than cmp.";
+        return;
+      }
+
+      var unit1 = document.getElementById("units5").value;
+      var price1 = document.getElementById("Price6").value;
+      var unit2 = document.getElementById("units7").value;
+      var price2 = document.getElementById("Price8").value;
+
+      var res1 = ((unit1 * price1 ) -(unit1*unit2))/(unit2 -price2);
+     // var res2 = r1*(unit2+ price1);
+      //var result = res1 / res2;
+      document.getElementById("result2").innerHTML = "Total units to be baught &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<bold>"
+        + res1 + "</bold>";
+    }
+
     function clearFields() {
       document.getElementById("units1").value = '';
       document.getElementById("Price1").value = '';
       document.getElementById("units2").value = '';
       document.getElementById("Price2").value = '';
       document.getElementById("result").innerHTML = '';
+
+      document.getElementById("units5").value = '';
+      document.getElementById("Price6").value = '';
+      document.getElementById("units7").value = '';
+      document.getElementById("Price8").value = '';
+      document.getElementById("result2").innerHTML = '';
     }
   </script>
 </body>
